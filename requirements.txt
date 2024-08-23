@@ -1,0 +1,2 @@
+#Phython Version -x
+django==4.2
