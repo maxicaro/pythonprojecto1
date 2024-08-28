@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Registrar usuario</title>
+    <link href="{% static 'appt/css/styles.css' %}" rel="stylesheet" />
+</head>
+<body class="pagina-registro">
+    <a href="/app/index/">Ir a inicio</a>
+    <form action="/app/buscar/" method="get" class="formulario">
+        {%csrf_token%}
+        <h1 class="titulo-formulario">¡Buscar!</h1>
+        <input type="number" id="codigo" name="codigo" placeholder="Ingrsa el codigo:" class="input-texto">
+        <input type="submit" name="register" class="boton-submit">
+    </form>
+     <!-- Mostrar el mensaje de éxito o error -->
+     {% if mensaje %}
+     <h3 class="ok">{{ mensaje }}</h3>
+ {% endif %}
+</body>
+</html>
