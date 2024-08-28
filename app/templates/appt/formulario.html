@@ -10,7 +10,7 @@
     <a href="/app/index/">Ir a inicio</a>
     <form action="/app/especialista_form/" method="post" class="formulario">
         {%csrf_token%}
-        <h1 class="titulo-formulario">¡Registrar!!</h1>
+        <h1 class="titulo-formulario">¡Registrar!</h1>
         <input type="text" id="nombre" name="nombre" placeholder="Especialista:" class="input-texto" required pattern="[a-zA-ZÀ-ÿ\s]+" title="Solo se permiten letras y espacios.">
         <input type="number" id="codigo" name="codigo" placeholder="Ingresa el codigo:" class="input-texto" required>
         <input type="submit" name="register" class="boton-submit">

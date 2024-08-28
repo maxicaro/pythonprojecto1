@@ -23,7 +23,7 @@ def turno(req):
     return render(req,'appt/turnos.html')
 
 
-def curso_form(req):
+def especialista_form(req):
     mensaje = ''
     if req.method == 'POST':
         
