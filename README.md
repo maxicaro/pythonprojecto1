@@ -1,4 +1,4 @@
-AVEGACION:
+NAVEGACION:
 
 En el archivo padre.html esta la plantilla y en la sección nav están los enlaces para navegar -Ejemplo: Turnos
 
