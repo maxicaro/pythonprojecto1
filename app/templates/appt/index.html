@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Freelancer - Start Bootstrap Theme</title>
+        <title>Incio</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -29,10 +29,37 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'index' %}">Inicio</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'especialista' %}">Especialistas</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'List' %}">Especialistas</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'profesional' %}">Profesionales</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'turno' %}">Turnos</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'contacto' %}">Contacto</a></li>
+                        
+                              <!-- Boton lista para serrar y inciar sesion de booptrap-->
+                              {# Dropdown para la cuenta de usuario #}
+<ul class="navbar-nav ms-auto">
+    {% if request.user.is_authenticated %}
+        <li class="nav-item dropdown">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ request.user.username }} <!-- Muestra el nombre de usuario -->
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li> <!-- Cerrar sesión -->
+            </ul>
+        </li>
+    {% else %}
+        <li class="nav-item dropdown">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Cuenta
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+                <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar sesión</a></li> <!-- Iniciar sesión -->
+                <li><a class="dropdown-item" href="{% url 'register' %}">Crear cuenta</a></li> <!-- Crear cuenta -->
+            </ul>
+        </li>
+    {% endif %}
+</ul>
+                          <!-- Cierre del boton de serrar y inciar sesion de booptrap-->
+
                     </ul>
                 </div>
             </div>

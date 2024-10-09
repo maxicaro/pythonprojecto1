@@ -20,10 +20,11 @@ from Projecto1.views import saludo,otar_vista,probando_template,dia_de_hoy,agreg
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-     path('app/', include('app.urls')),
+    path('app/', include('app.urls')),
+    path('users/', include('users.urls')),
     path('saludo/', saludo),
     path('otra_vista/', otar_vista),
     path('plantillas/', probando_template),
     path('dia/', dia_de_hoy),
-     path('agregar_esp/<especia>/<num>/', agregar_especialista),
+    path('agregar_esp/<especia>/<num>/', agregar_especialista),
 ]

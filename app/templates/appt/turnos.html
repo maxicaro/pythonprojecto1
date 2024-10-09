@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Turnos</title>
 </head>
 <body>
     {% extends "appt/padre.html"%}
@@ -11,6 +11,7 @@
     {% load static %}
 
     {% block contenidoQueCambia %}
+    
     <section class="page-section bg-primary text-white mb-0" id="about">
         <div class="container">
             <!-- About Section Heading-->
@@ -28,7 +29,7 @@
             </div>
             <!-- About Section Button-->
             <div class="text-center mt-4">
-                <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
+                <a class="btn btn-xl btn-outline-light" href="{% url 'index' %}">
                     <i class="fas fa-download me-2"></i>
                     Volver a inicio
                 </a>

@@ -29,10 +29,39 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'index' %}">Inicio</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'especialista' %}">Especialistas</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'List' %}">Especialistas</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'profesional' %}">Profesionales</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'turno' %}">Turnos</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'contacto' %}">Contacto</a></li>
+
+                         <!-- Boton lista para serrar y inciar sesion de booptrap-->
+
+                         {# Dropdown para la cuenta de usuario #}
+                         <ul class="navbar-nav ms-auto">
+                             {% if request.user.is_authenticated %}
+                                 <li class="nav-item dropdown">
+                                     <a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                         {{ request.user.username }} <!-- Muestra el nombre de usuario -->
+                                     </a>
+                                     <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                         <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a></li> <!-- Cerrar sesión -->
+                                     </ul>
+                                 </li>
+                             {% else %}
+                                 <li class="nav-item dropdown">
+                                     <a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                         Cuenta
+                                     </a>
+                                     <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+                                         <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar sesión</a></li> <!-- Iniciar sesión -->
+                                         <li><a class="dropdown-item" href="{% url 'register' %}">Crear cuenta</a></li> <!-- Crear cuenta -->
+                                     </ul>
+                                 </li>
+                             {% endif %}
+                        
+                      
+                      <!-- Cierre del boton de serrar y inciar sesion de booptrap-->
+                       
                     </ul>
                 </div>
             </div>
@@ -53,10 +82,103 @@
                 <!-- Masthead Subheading-->
                 <p class="masthead-subheading font-weight-light mb-0">Seguridad - Confianza - Atención</p>
             </div>
+
+            <style>
+                .model {
+                    font-family: Arial, sans-serif;
+                    background-color: #f2f2f2;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 50vh;
+                }
+        
+                .login-container {
+                    background-color: #ffffff;
+                    padding: 40px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    width: 100%;
+                    max-width: 400px;
+                }
+        
+                h2 {
+                    text-align: center;
+                    color: #333;
+                    margin-bottom: 20px;
+                    font-size: 24px;
+                }
+        
+                form {
+                    display: flex;
+                    flex-direction: column;
+                }
+        
+                form p {
+                    margin: 10px 0;
+                    color: #333;
+                }
+        
+                input[type="text"],
+                input[type="password"] {
+                    width: 100%;
+                    padding: 10px;
+                    margin: 10px 0;
+                    border-radius: 5px;
+                    border: 1px solid #ccc;
+                    box-sizing: border-box;
+                }
+        
+                button[type="submit"] {
+                    padding: 10px;
+                    background-color: #4CAF50;
+                    border: none;
+                    border-radius: 5px;
+                    color: white;
+                    font-size: 16px;
+                    cursor: pointer;
+                }
+        
+                button[type="submit"]:hover {
+                    background-color: #45a049;
+                }
+        
+                .message {
+                    margin-top: 20px;
+                    text-align: center;
+                }
+        
+                .message a {
+                    color: #4CAF50;
+                    text-decoration: none;
+                }
+        
+                .message a:hover {
+                    text-decoration: underline;
+                }
+            </style>
+            
         </header>
         <!-- Portfolio Section-->
          {% block contenidoQueCambia %}
-         Ahora todo lo que esta afuera es fijo, es decir se musetra para todos lo mismo, menos lo que pogamos aca dentro.
+         <div class="model">
+         <div class="login-container">
+            <h2>Iniciar Sesión</h2>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <div class="message">
+                <p>¿No tienes cuenta? <a href="{% url 'register' %}">Regístrate aquí</a></p>
+            </div>
+        </div>
+    </div>
+    
+        </form>
          {% endblock %}
 
         <section class="page-section portfolio" id="portfolio">
